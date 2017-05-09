@@ -1,9 +1,9 @@
+require "html/pipeline"
 require "html/pipeline/onebox/version"
+require "html/pipeline/onebox/onebox_filter.rb"
 
-module Html
-  module Pipeline
-    module Onebox
-      # Your code goes here...
-    end
+module HTML
+  class Pipeline
+    autoload :OneboxFilter, 'html/pipeline/onebox/onebox_filter'
   end
 end

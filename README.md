@@ -22,8 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
+You can add HTML::Pipeline::OneboxFilter into your pipeline like this:
+```ruby
+pipeline = HTML::Pipeline.new [
+  HTML::Pipeline::OneboxFilter,
+  HTML::Pipeline::MarkdownFilter # or any other filters
+]
+result = pipeline.call(text)
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

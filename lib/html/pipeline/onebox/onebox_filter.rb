@@ -7,11 +7,8 @@ module HTML
       def call
         regex = /(?<=\A|\s)+(https?:\/\/|www\.)\S*/
         @text.gsub(regex) do |element|
-          url = element.strip
-          parsed_element = ::Onebox.preview(url).to_s.strip
-
-          if parsed_element.present?
-            element.gsub(url, parsed_element)
+          if onebox_preview = ::Onebox.preview(element).to_s.strip.presence
+            onebox_preview
           else
             element
           end

@@ -5,7 +5,7 @@ module HTML
     # HTML Filter for Onebox.
     class OneboxFilter < TextFilter
       def call
-        regex = /\s+(https?:\/\/|www\.)\S*/
+        regex = /(?<=\A|\s)+(https?:\/\/|www\.)\S*/
         @text.gsub(regex) do |element|
           url = element.strip
           parsed_element = ::Onebox.preview(url).to_s.strip
@@ -20,4 +20,3 @@ module HTML
     end
   end
 end
-

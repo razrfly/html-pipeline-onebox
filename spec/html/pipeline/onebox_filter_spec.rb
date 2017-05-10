@@ -21,7 +21,14 @@ RSpec.describe HTML::Pipeline::OneboxFilter do
   end
 
   it "doesn't affect links without leading whitespace" do
-    expect(subject.to_html(link)).to eq(link)
+    new_link = "TEXT" + link
+    expect(subject.to_html(new_link)).to eq(new_link)
+  end
+
+  it "does affect links at start of line" do
+    expect(subject.to_html(link)).to eq(
+      %(<iframe width="480" height="360" src="https://www.youtube.com/embed/qediav063xQ?feature=oembed&amp;wmode=opaque" frameborder="0" allowfullscreen="">\n            </iframe>)
+    )
   end
 
   it "does affect links with leading whitespace" do
